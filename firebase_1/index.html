@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KeyBored - Home</title>
-    <link rel="stylesheet" href="page.css">
+  <meta charset="UTF-8">
+  <title>Firebase Auth</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="auth-container">
+    <h2>Sign Up</h2>
+    <input type="email" id="signup-email" placeholder="Email">
+    <input type="password" id="signup-password" placeholder="Password">
+    <button onclick="signUp()">Sign Up</button>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="recomendations.html">Recommendations</a></li>
-            </ul>
-        </nav>
-    </header>
+    <h2>Login</h2>
+    <input type="email" id="login-email" placeholder="Email">
+    <input type="password" id="login-password" placeholder="Password">
+    <button onclick="login()">Login</button>
 
-    <main>
-        <h1>Welcome to KeyBored</h1>
-        <p>Find the best gaming keyboards suited for your needs.</p>
+    <p id="status"></p>
+  </div>
 
-        <section>
-            <h2>Explore Keyboards</h2>
-            <p>Check out our top recommendations for gaming keyboards.</p>
-            <a href="recommendations.html">
-                <button>View Recommendations</button>
-            </a>
-        </section>
-    </main>
-
-    <footer>
-        <h2>Anthony</h2>
-    </footer>
-
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
