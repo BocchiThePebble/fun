@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up - KeyBored</title>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <main class="auth-container">
+    <h2>Create Account</h2>
+    <input type="email" id="signup-email" placeholder="Email">
+    <input type="password" id="signup-password" placeholder="Password">
+    <button onclick="signUp()">Sign Up</button>
+    <p id="signup-message"></p>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </main>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+  <script src="firebase.js"></script>
+
+  <script>
+    function signUp() {
+      const email = document.getElementById("signup-email").value;
+      const password = document.getElementById("signup-password").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          return firebase.firestore().collection("users").doc(user.uid).set({
+            email: user.email,
+            createdAt: new Date()
+          });
+        })
+        .then(() => {
+          // ✅ Redirect to homepage
+          window.location.href = "index.html";
+        })
+        .catch(error => {
+          document.getElementById("signup-message").innerText = error.message;
+        });
+    }
+  </script>
+</body>
+</html>
